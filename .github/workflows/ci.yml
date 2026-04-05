@@ -4,13 +4,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-        - name: uptime
-          run: uptime
-        - name: check no of processors
-          run: nproc
-  test:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-        - name: hello
-          run: echo "Hello!"
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t Kevappbuilds/ciportfolio .
+      - name: List images
+        run: docker images
+  
